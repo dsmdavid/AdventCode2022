@@ -18,7 +18,14 @@ jobs:
     - run: |
           export AOC_SESSION=${{ secrets.AOC_SESSION }}
           export AOC_USER=${{ secrets.AOC_USER_ID }}
-          python utils/download_input.py --year 2021 --day 2           
+          python utils/download_input.py --year 2021 --day 2   
+          echo " here"
+          env
+          echo "there"
+          echo "pwd"
+          pwd
+          echo "ls"
+          ls        
     
     - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
       with:
