@@ -2,3 +2,6 @@
 aoc22/*
 secrets/*
 logs/*
+__pycache__/
+pip-log.txt
+.DS_Store
