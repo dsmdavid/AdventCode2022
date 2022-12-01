@@ -1,0 +1,4 @@
+*.bak
+aoc22/*
+secrets/*
+logs/*
