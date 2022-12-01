@@ -15,10 +15,11 @@ jobs:
         python-version: '3.9'
         cache: 'pip' # caching pip dependencies
     - run: pip install -r requirements.txt
-    - run: |
+    - id: launch python script
+      run: |
           export AOC_SESSION=${{ secrets.AOC_SESSION }}
           export AOC_USER=${{ secrets.AOC_USER_ID }}
-          python utils/download_input.py --year 2021 --day 2           
+          python utils/download_input.py
     
     - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
       with:
