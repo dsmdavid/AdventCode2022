@@ -29,16 +29,12 @@ def has_overlap(a, b):
     temp = [a, b]
     temp.sort(key=lambda x: x[0])
     a, b = temp
-    if a[0] <= b[0]:
-        if a[1] >= b[0]:
-            return True
-        else:
-            return False
-    else:
-        if a[1] <= b[1]:
-            return True
-        else:
-            return False
+    if a[0] <= b[0] and a[1] >= b[0]:
+        return True
+    elif a[0] > b[0] and a[1] <= b[1]:
+        return True
+    else:        
+        return False
 
 
 def parse_elf(s):
