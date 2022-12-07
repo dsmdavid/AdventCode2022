@@ -1,7 +1,7 @@
 create or replace table TEST_DB.AOC2022.INPUT_2022_06 as
 select t.$1 as input,
-    metadata $filename as fn,
-    metadata $file_row_number as rn
+    metadata$filename as fn,
+    metadata$file_row_number as rn
 from @stage_aoc (pattern => '.*2022__6.txt.gz') as t;
 
 -- create a long table with one character per row
