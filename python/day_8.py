@@ -1,3 +1,8 @@
+# I should have used custom classes for day 7.
+# so I'm going to try to force myself to use some classes
+# for other days, hopefully one day I'll get it right...
+
+
 import os
 from collections import defaultdict
 import pprint
