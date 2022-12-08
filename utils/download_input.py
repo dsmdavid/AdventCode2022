@@ -104,8 +104,8 @@ YEAR = -1
 DAY = -1
 DOWNLOAD_FOLDER = "./inputs"
 AOC_USER = os.getenv("AOC_USER")
-AOC_EMAIL= os.getenv("AOC_EMAIL")
-AOC_USER_AGENT=os.getenv("AOC_USER_AGENT")
+AOC_EMAIL = os.getenv("AOC_EMAIL")
+AOC_USER_AGENT = os.getenv("AOC_USER_AGENT")
 # AOC_SESSION = os.getenv('AOC_SESSION')
 
 if __name__ == "__main__":
@@ -130,5 +130,5 @@ if __name__ == "__main__":
     YEAR = int(namespace.year)
     DAY = int(namespace.day)
     session = requests.Session()
-    session.headers.update({'User-Agent':AOC_USER_AGENT,'From':AOC_EMAIL})
+    session.headers.update({"User-Agent": AOC_USER_AGENT, "From": AOC_EMAIL})
     download_input(session=session)
