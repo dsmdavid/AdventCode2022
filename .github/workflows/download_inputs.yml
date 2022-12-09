@@ -19,6 +19,8 @@ jobs:
       run: |
           export AOC_SESSION=${{ secrets.AOC_SESSION }}
           export AOC_USER=${{ secrets.AOC_USER_ID }}
+          export AOC_EMAIL=${{ secrets.AOC_EMAIL }}
+          export AOC_USER_AGENT=${{ secrets.AOC_USER_AGENT }}
           python utils/download_input.py
     
     - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
