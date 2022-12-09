@@ -69,14 +69,10 @@ create or replace table TEST_DB.AOC2022.solved_day_8 as with sample_values as (
         from rec
             inner join narrow as n on (
                 case
-                    when rec.dir = 'up' then rec.cn = n.cn
-                    and rec.n_rn - 1 = n.rn
-                    when rec.dir = 'down' then rec.cn = n.cn
-                    and rec.n_rn + 1 = n.rn
-                    when rec.dir = 'left' then rec.n_cn - 1 = n.cn
-                    and rec.rn = n.rn
-                    when rec.dir = 'right' then rec.n_cn + 1 = n.cn
-                    and rec.rn = n.rn
+                    when rec.dir = 'up' then rec.cn = n.cn and rec.n_rn - 1 = n.rn
+                    when rec.dir = 'down' then rec.cn = n.c and rec.n_rn + 1 = n.rn
+                    when rec.dir = 'left' then rec.n_cn - 1 = n.cn and rec.rn = n.rn
+                    when rec.dir = 'right' then rec.n_cn + 1 = n.cn and rec.rn = n.rn
                 end
             )
         where 1 = 1 
@@ -86,71 +82,31 @@ create or replace table TEST_DB.AOC2022.solved_day_8 as with sample_values as (
         select n.rn,
             n.cn,
             n.height,
-            min(
-                case
-                    when rec.dir = 'up' then rec.n_rn
-                end
-            ) as ups,
-            max(
-                case
-                    when rec.dir = 'down' then rec.n_rn
-                end
-            ) as downs,
-            min(
-                case
-                    when rec.dir = 'left' then rec.n_cn
-                end
-            ) as lefts,
-            max(
-                case
-                    when rec.dir = 'right' then rec.n_cn
-                end
-            ) as rights,
+            min( case when rec.dir = 'up'       then rec.n_rn   end) as ups,
+            max( case when rec.dir = 'down'     then rec.n_rn   end) as downs,
+            min( case when rec.dir = 'left'     then rec.n_cn   end) as lefts,
+            max( case when rec.dir = 'right'    then rec.n_cn   end) as rights,
             case
                 when ups = 1 then 1
-                when downs = (
-                    select max(rn)
-                    from narrow
-                ) then 1
+                when downs = (select max(rn)cfrom narrow) then 1
                 when lefts = 1 then 1
-                when rights = (
-                    select max(cn)
-                    from narrow
-                ) then 1
+                when rights = (select max(cn) from narrow) then 1
                 else 0
             end as is_visible
         from sample_ as n
             left join rec on n.rn = rec.rn
             and n.cn = rec.cn
         where rec.continue = 1
-        group by 1,
-            2,
-            3
+        group by 1, 2, 3
     ),
     all_visibility as (
         select n.rn,
             n.cn,
             n.height,
-            max(
-                case
-                    when rec.dir = 'up' then rec.ct
-                end
-            ) as ups,
-            max(
-                case
-                    when rec.dir = 'down' then rec.ct
-                end
-            ) as downs,
-            max(
-                case
-                    when rec.dir = 'left' then rec.ct
-                end
-            ) as lefts,
-            max(
-                case
-                    when rec.dir = 'right' then rec.ct
-                end
-            ) as rights,
+            max(case when rec.dir = 'up'    then rec.ct end) as ups,
+            max(case when rec.dir = 'down'  then rec.ct end) as downs,
+            max(case when rec.dir = 'left'  then rec.ct end) as lefts,
+            max(case when rec.dir = 'right' then rec.ct end) as rights,
             ups * downs * lefts * rights as visibility
         from sample_ as n
             left join rec on n.rn = rec.rn
