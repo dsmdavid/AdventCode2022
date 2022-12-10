@@ -33,10 +33,8 @@ class Knot:
         self.name = name
 
     def move_tail(self):
-        chx = self.parent_knot.current_position[0]
-        chy = self.parent_knot.current_position[1]
-        ctx = self.current_position[0]
-        cty = self.current_position[1]
+        chx, chy = self.parent_knot.current_position
+        ctx, cty = self.current_position
         dx = (chx - ctx) ** 2
         dy = (chy - cty) ** 2
         distance = dx + dy
