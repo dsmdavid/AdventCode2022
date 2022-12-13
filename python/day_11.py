@@ -122,12 +122,9 @@ if __name__ == "__main__":
         init = parse_block(block)
         MONKEYS[init[0]] = Monkey(*init)
     
-    MONKEYS_PART_II = deepcopy(MONKEYS)
     for r in range(1,21):
         for i, monkey in MONKEYS.items():
             monkey.process_all_items()
-    # for i, monkey in MONKEYS.items():
-    #     print(monkey.name, monkey.list_of_items)
     inspected = [monkey.inspected for k, monkey in MONKEYS.items()]
     vals = sorted(inspected, reverse=True)
     print('part1\t', vals[0]*vals[1])
