@@ -51,9 +51,6 @@ if __name__ == "__main__":
 
     # input = get_input(None)
     parse_numbers(input)
-    fig, axs = plt.subplots(1, 2, layout="constrained", figsize=(5.5, 3.5))
-    ax = axs[0]
-    ax_b = axs[1]
 
     #  Create polygons
     polygons = []
@@ -93,6 +90,10 @@ if __name__ == "__main__":
     print("part_2/t", int(ans))
 
     # Plot
+    fig, axs = plt.subplots(1, 2, layout="constrained", figsize=(5.5, 3.5))
+    ax = axs[0]
+    ax_b = axs[1]
+
     plot_polygon(combined, ax=ax, add_points=False, color="blue")
     plot_polygon(bounding_box_i, ax=ax, add_points=True, color="gray")
     plot_line(line, ax=ax, add_points=False, color="green")
