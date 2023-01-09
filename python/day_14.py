@@ -184,7 +184,6 @@ if __name__ == "__main__":
     # dfs.append(create_df(points_dict_,0))
     # plot_map(points_dict_, *get_max_min(points_dict_))
 
-
     print("--- ball --- ")
     flag = True
     ct = 0

@@ -119,7 +119,13 @@ if __name__ == "__main__":
     free_space = total_file_size - space_in_use
     diff_needed = space_needed - free_space
 
-    print(space_in_use, part_1, space_in_use - part_1, total_file_size - space_in_use, diff_needed)
+    print(
+        space_in_use,
+        part_1,
+        space_in_use - part_1,
+        total_file_size - space_in_use,
+        diff_needed,
+    )
 
     needed = list(filter(lambda x: x >= diff_needed, SUMS))
     part_2 = min(needed)
