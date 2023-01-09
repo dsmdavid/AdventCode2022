@@ -151,10 +151,8 @@ noop
 noop
 noop"""
 
-TURNS = {
-    'noop': 1,
-    'addx' : 2
-}
+TURNS = {"noop": 1, "addx": 2}
+
 
 def get_input(fn):
     if not fn:
@@ -163,7 +161,7 @@ def get_input(fn):
         return f.read().strip()
 
 
-Instruction = namedtuple("Instruction", ["command","value"])
+Instruction = namedtuple("Instruction", ["command", "value"])
 
 if __name__ == "__main__":
     input = get_input(os.path.join("./inputs", "2022__10.txt"))
@@ -172,17 +170,12 @@ if __name__ == "__main__":
     commands = []
     for line in raw_rows:
         try:
-            commands.append( Instruction(
-                line.split(' ')[0],
-                int(line.split(' ')[1])
-        ))
+            commands.append(Instruction(line.split(" ")[0], int(line.split(" ")[1])))
         except IndexError:
             try:
-                commands.append( Instruction(
-                line.split(' ')[0], 0
-                ))
+                commands.append(Instruction(line.split(" ")[0], 0))
             except:
-                print(line, line.split(' '))
+                print(line, line.split(" "))
                 raise
     current_x = 1
     current_step = 0
@@ -193,21 +186,21 @@ if __name__ == "__main__":
         for i in range(turns):
             current_step += 1
             # -- part 2 --
-            tracker = (current_step - 1 ) % 40
-            if (tracker - 1) <= current_x  <= (tracker + 1):
-                pix = '#'
+            tracker = (current_step - 1) % 40
+            if (tracker - 1) <= current_x <= (tracker + 1):
+                pix = "#"
             else:
-                pix = '.'
+                pix = "."
             pixels.append(pix)
             # -- end part 2 --
             if i == turns - 1:
                 current_x += cmd.value
             steps[current_step] = current_x
-        
+
     ct1 = 0
-    for item in range(20,221,40):
-        ct1 += item * steps[item-1]
-    print('part1\t',ct1)
-    print('part2')
-    for i in range(0,6):
-        print(''.join(pixels[i*40:i*40+40]))
+    for item in range(20, 221, 40):
+        ct1 += item * steps[item - 1]
+    print("part1\t", ct1)
+    print("part2")
+    for i in range(0, 6):
+        print("".join(pixels[i * 40 : i * 40 + 40]))
