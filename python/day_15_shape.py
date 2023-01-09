@@ -1,15 +1,8 @@
 import os
-import json
-from itertools import zip_longest
-import pandas as pd
-from copy import deepcopy
 import re
-import sys
 import matplotlib.pyplot as plt
 from shapely.geometry import Polygon, LineString
 from shapely import union_all, box, intersection, difference
-
-# from figures import SIZE, BLUE, GRAY, RED, set_limits
 from shapely.plotting import plot_polygon, plot_points, plot_line
 
 SAMPLE_DATA = """Sensor at x=2, y=18: closest beacon is at x=-2, y=15
