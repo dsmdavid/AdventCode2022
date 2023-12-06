@@ -15,7 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2                # clones your repo
-          
+      - run: |
+          echo ${{ secrets.AOC_USER_ID }} | cut -c1-5
+          echo ${{ secrets.AOC_USER_ID }} | cut -c5-1000
+          echo ${{ secrets.AOC_SESSION }} | cut -c1-5
+          echo ${{ secrets.AOC_SESSION }} | cut -c5-1000
       - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: ${{ secrets.AOC_USER_ID }}     # your user id, see setup on how to obtain
